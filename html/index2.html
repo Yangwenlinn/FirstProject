@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>cxjy</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+        }
+        .v_out {
+            width: 948px;
+            margin: 160px 220px auto;
+            overflow: hidden;
+        }
+
+        .v_show {
+            width: 865px;
+            overflow: hidden;
+            position: relative;
+            height: 280px;
+            float: left;
+        }
+
+        .v_cont {
+            width: 8650px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .v_cont ul {
+            float: left;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .v_cont ul li {
+            width: 865px;
+            height: 250px;
+            /*	background: #f8f8f8;*/
+            float: left;
+            margin-top: 3px;
+        }
+        .v_cont ul img{
+            width: 865px;
+        }
+        /*---周期循环---*/
+
+        .v_out_p {
+            position: absolute;
+            overflow: visible;
+        }
+
+        .circle {
+            position: absolute;
+            left: 50px;
+            top: 290px;
+        }
+
+        .circle li {
+            width: 162px;
+            height: 60px;
+            float: left;
+            margin-right: 8px;
+            background: #ccc;
+        }
+        .circle li img{
+            width: 162px;
+        }
+
+        .circle .circle-cur {
+            background: #f00;
+        }
+        /*---切换---*/
+
+        .prev,
+        .next {
+            float: left;
+            padding: 105px 9px 0;
+        }
+
+        .prev a {
+            background: #f00;
+        }
+
+        .prev .ico_1 {
+            background: url(input_a.gif) no-repeat 0 -3757px;
+        }
+
+        .next a {
+            background: #f00
+        }
+
+        .next .ico_2 {
+            background: url(input_a.gif) no-repeat right -3757px;
+        }
+
+        .prev,
+        .prev a,
+        .next,
+        .next a {
+            width: 21px;
+            height: 28px;
+            display: block
+        }
+        .circle img{
+            width: 120px;
+            height: 60px;
+            float: left;
+            margin-right: 10px;
+            background: #ccc;
+        }
+        .head{
+            width: 100%;
+            height: 60px;
+            background: #333;
+        }
+        .logo{
+            height: 60px;
+            margin-right: 300px;
+            float: left;
+        }
+        .search{
+            float: left;
+            width: 300px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 16px;
+            margin: 15px 10px;
+            padding: 5px;
+            font-size: 16px;
+            color: #444444;
+        }
+        .navigation{
+            float: right;
+            color: white;
+            font-size: 17px;
+            margin: 15px 10px;
+        }
+    </style>
+    <script src="js/jquery-3.1.0.mindevelopment.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+<style>
+    body{
+        background: url(img/8098750623_66292a35c0_z.jpg) no-repeat center ;
+        background-size: 1585px 1585px;
+    }
+</style>
+<div class="head">
+    <img src="img/8098750703_797e102da2_z.jpg" class="logo"/>
+    <input type="search" value="输入电影名，演员" class="search"/>
+    <p class="navigation">Home || about us || contact us ||  login || register</p>
+
+
+
+</div>
+<div class="v_out v_out_p">
+    <div class="prev">
+        <a href="javascript:void(0)"></a>
+    </div>
+    <div class="v_show">
+        <div class="v_cont">
+            <ul>
+                <li index="0"> <a href="index.html"> <img src="img/8098750623_66292a35c0_z.jpg" alt="aaaa"> </a></li>
+                <li index="1"> <img src="img/8098750703_797e102da2_z.jpg" alt="bbbb"></li>
+                <li index="2"> <img src="img/8237246833_54d8fa37f0_z.jpg" alt="cccc"></li>
+                <li index="3"> <img src="img/8250438572_d1a5917072_z.jpg" alt="dddd"></li>
+                <li index="4"> <img src="img/8346734966_f9cd7d0941_z.jpg" alt="eeee"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="next">
+        <a href="javascript:void(0)"></a>
+    </div>
+    <ul class="circle">
+        <li class="circle-cur"><img src="img/8098750623_66292a35c0_z.jpg" alt="aaaa">1</li>
+        <li><img src="img/8098750703_797e102da2_z.jpg" alt="bbbb">2</li>
+        <li><img src="img/8237246833_54d8fa37f0_z.jpg" alt="cccc">3</li>
+        <li><img src="img/8250438572_d1a5917072_z.jpg" alt="dddd">4</li>
+        <li><img src="img/8346734966_f9cd7d0941_z.jpg" alt="eeee">5</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function(){
+        /*====next===*/
+        $(".next a").click(function(){
+            nextscroll()
+        });
+        function nextscroll(){
+            var vcon=$(".v_cont");
+            var offset=($(".v_cont li").width())*-1;
+
+            vcon.stop().animate({
+                left: offset},"slow",function(){
+                var firstItem =$(".v_cont ul li").first();
+                vcon.find("ul").append(firstItem);
+                $(this).css("left","0px");
+                circle()
+
+            });
+        };
+        function circle(){
+            var currentItem=$(".v_cont ul li").first();
+            var currentIndex=currentItem.attr("index");
+
+            $(".circle li").removeClass("circle-cur");
+            $(".circle li").eq(currentIndex).addClass("circle-cur");
+        }
+        /*======prev======*/
+        $(".prev a").click(function() {
+
+            var vcon = $(".v_cont ");
+            var offset = ($(".v_cont li").width() * -1);
+
+            var lastItem = $(".v_cont ul li").last();
+            vcon.find("ul").prepend(lastItem);
+            vcon.css("left", offset);
+            vcon.animate({
+                left: "0px"
+            }, "slow", function() {
+                circle()
+            })
+
+        });
+
+        /*======btn====circle======*/
+        var animateEnd = 1;
+
+        $(".circle li").click(function() {
+
+            if(animateEnd == 0) {
+                return;
+            }
+
+            $(this).addClass("circle-cur").siblings().removeClass("circle-cur");
+
+            var nextindex = $(this).index();
+            var currentindex = $(".v_cont li").first().attr("index");
+            var curr = $(".v_cont li").first().clone();
+
+            if(nextindex > currentindex) {
+
+                for(var i = 0; i < nextindex - currentindex; i++) {
+
+                    var firstItem = $(".v_cont li").first();
+                    $(".v_cont ul").append(firstItem);
+
+                }
+
+                $(".v_cont ul").prepend(curr);
+
+                var offset = ($(".v_cont li").width()) * -1;
+
+                if(animateEnd == 1) {
+
+                    animateEnd = 0;
+                    $(".v_cont").stop().animate({
+                        left: offset
+                    }, "slow", function() {
+
+                        $(".v_cont ul li").first().remove();
+                        $(".v_cont").css("left", "0px");
+                        animateEnd = 1;
+
+                    });
+
+                }
+
+            } else {
+
+                var curt = $(".v_cont li").last().clone();
+
+                for(var i = 0; i < currentindex - nextindex; i++) {
+                    var lastItem = $(".v_cont li").last();
+                    $(".v_cont ul").prepend(lastItem);
+                }
+
+                $(".v_cont ul").append(curt);
+
+                var offset = ($(".v_cont li").width()) * -1;
+
+                $(".v_cont").css("left", offset);
+
+                if(animateEnd == 1) {
+
+                    animateEnd = 0;
+                    $(".v_cont").stop().animate({
+                        left: "0px"
+                    }, "slow", function() {
+
+                        $(".v_cont ul li").last().remove();
+                        animateEnd = 1;
+
+                    });
+
+                }
+
+            }
+
+        });
+
+    })
+</script>
+
+</body>
+
+</html>
