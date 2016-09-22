@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d03e8cf-0c78-421e-ba51-be8418796f43" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/demo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FirstProject.iws" />
@@ -178,7 +177,7 @@
       <updated>1474547816191</updated>
       <workItem from="1474547821249" duration="336000" />
       <workItem from="1474548163174" duration="1566000" />
-      <workItem from="1474549787767" duration="345000" />
+      <workItem from="1474549787767" duration="518000" />
     </task>
     <task id="LOCAL-00001" summary="first   commit">
       <created>1474548320060</created>
@@ -187,11 +186,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474548320060</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="third  commit">
+      <created>1474550240103</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1474550240103</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2247000" />
+    <option name="totallyTimeSpent" value="2420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -246,7 +252,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first   commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first   commit" />
+    <MESSAGE value="third  commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="third  commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -257,6 +264,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
